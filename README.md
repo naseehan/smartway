@@ -1,100 +1,130 @@
-# SmartWay Healthcare – Next.js Platform
+# SmartWay Healthcare website
 
-Modern Next.js 14 (App Router) clinical infrastructure and medical equipment distribution platform for **SmartWay Healthcare**.
+The website for **SmartWay Healthcare**, a medical equipment dealer and healthcare product distributor in Ernakulam, Kerala. Live at [smartwayhealthcare.com](https://smartwayhealthcare.com).
 
----
-
-## 🎯 Target SEO Keywords
-This platform is engineered to dominate search rankings for high-intent clinical queries:
-- **Primary Keywords**:
-  - `Medical Equipment Dealers in Kerala`
-  - `Medical Equipment Dealers in Ernakulam`
-  - `Medical Equipment Dealers in India`
-  - `Health Care Product Distributors in Kerala`
-  - `Health Care Product Distributors in Ernakulam`
-  - `Health Care Product Distributors in India`
-- **Secondary & Niche Keywords**:
-  - `Dialysis Machine Dealers Kochi`, `Nephrology Consumables Distributors Kerala`, `IVD Products India`, `Hospital Supplies Wholesale Ernakulam`, `Turnkey Dialysis Unit Setups Kerala`, `Biomedical Engineering Maintenance Kochi`.
+Built with Next.js 16 (App Router), React 19, TypeScript and Tailwind CSS, and hosted on Netlify. Every page is pre-rendered as static HTML at build time.
 
 ---
 
-## 🌐 Separate Pages Structure
-The platform features dedicated, SEO-optimized pages:
+## Getting started
 
-1. **Home (`/`)**:
-   - High-impact hero section with primary keyword headlines.
-   - Dynamic partner marquee (Aster DM Healthcare, Rajagiri Hospital, Apollo Adlux, Nipro, J. Mitra & Co.).
-   - 4 Core clinical verticals showcase.
-   - Featured products tabbed showcase.
-   - Turnkey clinical setup highlight (Dialysis wings, RO plants, STPs).
-   - Operational statistics (80+ healthcare facilities served).
-   - FAQ accordion with Schema.org JSON-LD.
-   - Lead capture and technical quote CTA.
-
-2. **Products Catalog (`/products`)**:
-   - Complete 43-product clinical inventory.
-   - Live interactive search bar.
-   - Category filtering (Nephro Care, IVD Products, General Hospital Supplies, Technical Engineering).
-   - Subcategory chips and spec badges.
-
-3. **Individual Product Pages (`/products/[slug]`)**:
-   - **43 Pre-rendered static pages** (SSG) for each medical asset (e.g. `/products/bicarbonate-mixture-dia-mix`, `/products/elisio-hx`, `/products/dialysis-machine`).
-   - Schema.org `Product` JSON-LD structured data on every product.
-   - Breadcrumb navigation with `BreadcrumbList` schema.
-   - Product specifications, high-res images, related items, and direct inquiry form.
-
-4. **Clinical Services (`/services`)**:
-   - Detailed breakdown of Nephro Care, IVD Diagnostics, Hospital Supplies, Spare Parts, and Turnkey Engineering.
-   - Deliverables list, quality standards, and facility consultation booking.
-
-5. **About Us (`/about`)**:
-   - Founded in 2022 in Kochi, Kerala.
-   - Chronological growth timeline (2022–2026).
-   - Leadership philosophy, clinical ethics, and 80+ hospital partners network.
-
-6. **Dedicated SEO Regional Hubs**:
-   - **`/medical-equipment-dealers-in-kerala`**: Tailored for all 14 Kerala districts with local hospital case studies and intra-Kerala rapid logistics.
-   - **`/medical-equipment-dealers-in-ernakulam`**: Hyper-local hub targeting Ernakulam, Kakkanad, and Kochi with warehouse pickup and 2-hour biomedical engineer response.
-   - **`/health-care-product-distributors-india`**: National hub highlighting pan-India cold-chain transport, regulatory CDSCO/ISO compliance, and institutional procurement.
-
-7. **Contact & Technical Quote (`/contact`)**:
-   - Corporate headquarters address (Shop No: 21/497, Ground Floor, Kaipadamugal, Thrikkakkara North, Ernakulam, Kerala 682021).
-   - Phone (+91 8921172300) and email (`contact@smartwayhealthcare.com`).
-   - Interactive quotation form with clinical vertical selection.
-   - Department directory (Nephrology, IVD, Supplies, AMC).
-
-8. **Clinical FAQ (`/faq`)**:
-   - Schema.org `FAQPage` rich snippet data.
-
-9. **Automated SEO Endpoints**:
-   - **`/sitemap.xml`**: Next.js dynamic sitemap (`src/app/sitemap.ts`) mapping all 52+ URLs with daily/weekly change frequency.
-   - **`/robots.txt`**: Next.js dynamic robots file (`src/app/robots.ts`).
-   - **`/google21bb29e04bce1e42.html`**: Google Search Console verification file in `public/`. Do not remove it, or the site loses verification.
-
----
-
-## 🛠️ Technical Stack
-- **Framework**: Next.js 14.2 (App Router)
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS with custom clinical brand palette (`#009065` emerald, `#a9ed42` clover, `#1d1f13` dark, `#f7f8f5` background)
-- **Typography**: Inter, Schibsted Grotesk, DM Serif Display
-- **Icons**: Lucide React
-- **SEO**: Schema.org JSON-LD (MedicalBusiness, LocalBusiness, Product, BreadcrumbList, FAQPage)
-
----
-
-## 🚀 Running Locally
+Requires **Node.js 20.9 or newer**.
 
 ```bash
-# Install dependencies
-npm install
+npm install       # install dependencies
+npm run dev       # local dev server at http://localhost:3000
+npm run build     # production build
+npm run start     # serve the production build locally
+npm test          # run the tests once
+npm run test:watch  # re-run tests on every change
+```
 
-# Start development server
-npm run dev
+---
 
-# Build for production
-npm run build
+## Pages
 
-# Start production server
-npm run start
+| URL | What it is | File |
+|---|---|---|
+| `/` | Homepage | `src/app/page.tsx` |
+| `/products` | Product catalog with search and category filters | `src/app/products/page.tsx` |
+| `/products/[slug]` | One page per product (43 in total) | `src/app/products/[slug]/page.tsx` |
+| `/services` | Services overview | `src/app/services/page.tsx` |
+| `/about` | Company background and timeline | `src/app/about/page.tsx` |
+| `/contact` | Contact details and enquiry form | `src/app/contact/page.tsx` |
+| `/faq` | Frequently asked questions | `src/app/faq/page.tsx` |
+| `/medical-equipment-dealers-in-kerala` | Kerala landing page | `src/app/medical-equipment-dealers-in-kerala/page.tsx` |
+| `/medical-equipment-dealers-in-ernakulam` | Ernakulam / Kochi landing page | `src/app/medical-equipment-dealers-in-ernakulam/page.tsx` |
+| `/health-care-product-distributors-india` | India-wide landing page | `src/app/health-care-product-distributors-india/page.tsx` |
+| `/sitemap.xml`, `/robots.txt` | Generated automatically | `src/app/sitemap.ts`, `src/app/robots.ts` |
+
+The product catalog filters by category from the URL, for example `/products?category=IVD%20Products`.
+
+---
+
+## Editing content
+
+Most text lives in data files, not in the page components:
+
+| To change | Edit |
+|---|---|
+| Products (names, descriptions, images, specs) | `src/data/products.ts` |
+| FAQ questions and answers | `src/data/faq.ts` |
+| Partner / client logos | `src/data/partners.ts` |
+| Services | `src/data/services.ts` |
+| About page timeline | `src/data/timeline.ts` |
+| Company name, address, phone, opening hours (structured data) | `generateOrganizationSchema` in `src/lib/seo.ts` |
+
+**Adding a product:** add an entry to `products` in `src/data/products.ts` with a unique `id` and `slug`, and put its image in `public/assets/images/products/`. Its page, sitemap entry and catalog card are created automatically. Set the optional `brand` field to the real manufacturer (for example `"Nipro"`); leave it out if unknown.
+
+**Images:** anything the site uses must be inside `public/`. The `assets/` folder in the project root is left over from the old site and is not served.
+
+---
+
+## Contact form (Netlify Forms)
+
+The enquiry form (`src/components/contact/ContactForm.tsx`) submits to **Netlify Forms**, which emails each enquiry to the owner. There is no server code or email password to configure.
+
+- Netlify cannot detect forms inside Next.js pages, so the form is also declared in `public/__forms.html`, and the component posts to that file.
+- The form is named `contact`. Its field names (`firstName`, `lastName`, `email`, `phone`, `category`, `message`) must match in both files. If you add or rename a field, update both.
+- `bot-field` is a hidden honeypot that filters spam.
+- Form submissions only work on the deployed Netlify site, not on `localhost`. After deploying, check **Netlify → Forms** that `contact` is listed and send a test enquiry.
+
+---
+
+## SEO
+
+- **Page titles and descriptions** are set per page with `buildMetadata()` from `src/lib/seo.ts`, which also adds the canonical URL and Open Graph / Twitter tags. Pass the title without the brand; ` | SmartWay Healthcare` is appended automatically. Keep the full title under about 60 characters.
+- **Structured data (JSON-LD):**
+  - `MedicalBusiness` / `LocalBusiness` on every page (`src/app/layout.tsx`)
+  - `Product` on each product page. No prices are published, because products are sold on quotation. Only add `offers` if real prices are available.
+  - `BreadcrumbList` wherever breadcrumbs appear
+  - `FAQPage` on `/faq` only (the FAQ section on other pages passes no `withSchema`, to avoid duplicates)
+- **No meta keywords.** Search engines ignore them; target phrases belong in titles, headings and page text.
+- **Google Search Console** is verified with `public/google21bb29e04bce1e42.html`. Do not remove it, or the site loses verification.
+
+After a deploy, submit `https://smartwayhealthcare.com/sitemap.xml` in Search Console and watch **Performance → Search results** for the queries the site appears for.
+
+---
+
+## Deploying to Netlify
+
+`netlify.toml` sets the build command and pins Node 22. Netlify detects Next.js and adds its own runtime automatically.
+
+Deploy with a Netlify build, **not** drag and drop (uploading files skips the Next.js runtime):
+
+```bash
+npx netlify-cli deploy --build --prod
+```
+
+or connect a Git repository in **Site configuration → Build & deploy** so every push deploys.
+
+After each deploy:
+
+1. Open a few pages and a product page.
+2. Send a test enquiry from `/contact` and confirm it arrives.
+3. Check `/google21bb29e04bce1e42.html` still loads.
+
+---
+
+## Tests
+
+Tests use Vitest and Testing Library (`vitest.config.mts`):
+
+- `src/lib/seo.test.ts`: titles, canonical URLs, product and breadcrumb schema (including that no prices are published)
+- `src/data/products.test.ts`: product lookups, plus checks that ids and slugs are unique and URL-safe and categories are valid
+- `src/components/products/ProductsClient.test.tsx`: catalog search and filters
+
+Run `npm test` before deploying.
+
+---
+
+## Project structure
+
+```
+public/            Static files served as-is (images, form definition, verification file)
+src/app/           Pages, layout, sitemap and robots
+src/components/    UI components (home, layout, products, contact, seo)
+src/data/          Site content: products, FAQs, partners, services, timeline
+src/lib/seo.ts     Metadata and JSON-LD helpers
+netlify.toml       Netlify build settings
 ```
