@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex">
+  <title>Forms</title>
+</head>
+<body>
+  <!--
+    Netlify Forms detection. Next.js pages are not scanned for forms, so the
+    contact form is declared here and ContactForm.tsx posts to this file.
+    Field names must match ContactForm.tsx.
+  -->
+  <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+    <input type="text" name="bot-field" />
+    <input type="text" name="firstName" />
+    <input type="text" name="lastName" />
+    <input type="email" name="email" />
+    <input type="tel" name="phone" />
+    <input type="text" name="category" />
+    <textarea name="message"></textarea>
+  </form>
+</body>
+</html>

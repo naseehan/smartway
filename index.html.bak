@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SmartWay Healthcare | Clinical Infrastructure & Medical Equipment</title>
+
+  <script>
+    // CRITICAL: Initialize global process shim immediately
+    window.process = {
+      env: { API_KEY: '' },
+      nextTick: function (cb) { setTimeout(cb, 0); }
+    };
+  </script>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description"
+    content="SmartWay Healthcare: Leading distributor of Nephro Care, IVD Products, General Hospital Supplies, and Spare parts in Kochi, Kerala. Specialized in turnkey clinical setups since 2022.">
+  <meta name="keywords"
+    content="Medical Equipment Kerala, Dialysis Systems Kochi, IVD Products India, Hospital Supplies Kerala, Nephro Care Infrastructure, Clinical Engineering">
+  <meta name="author" content="SmartWay Healthcare">
+
+  <!-- Open Graph / Social Media -->
+  <meta property="og:title" content="SmartWay Healthcare | Clinical Infrastructure">
+  <meta property="og:description"
+    content="Distributing Wellness, Empowering Lives. Precision medical equipment and turnkey hospital infrastructure.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://smartwayhealthcare.com">
+
+  <!-- External Libraries -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/Observer.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles:wght@400;700&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&family=DM+Serif+Display:ital@0;1&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-primary: #f7f8f5;
+      --text-primary: #1d1f13;
+      --text-secondary: #1d1f1399;
+      --border-subtle: #eaf0dd;
+      --accent-clover: #a9ed42;
+      --accent-dark: #009065;
+      --bg-clover-light: #f0ffd1;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .font-manrope {
+      font-family: 'Inter', sans-serif;
+    }
+
+    .font-system {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    .font-title {
+      font-family: 'Schibsted Grotesk', sans-serif;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+
+    .font-dm-serif {
+      font-family: 'DM Serif Display', serif;
+    }
+
+    .font-serif-italic {
+      font-family: 'DM Serif Display', serif;
+      font-style: italic;
+    }
+
+    .bg-subtle-gradient {
+      background-color: #f7f8f5;
+    }
+
+    @media (min-width: 768px) {
+      .bg-subtle-gradient {
+        background: radial-gradient(circle at 100% 0%, rgba(169, 237, 66, 0.05) 0%, transparent 40%),
+          radial-gradient(circle at 0% 100%, rgba(240, 255, 209, 0.4) 0%, transparent 40%);
+        background-color: #f7f8f5;
+      }
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.95);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .animate-fade-up {
+      animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .framer-shadow-premium {
+      box-shadow: inset 0px 0px 20px 1.64px rgba(255, 255, 255, 0.15),
+        0px 0.8px 0.5px -0.3px rgba(0, 0, 0, 0.13),
+        0px 2px 1.2px -0.6px rgba(0, 0, 0, 0.13),
+        0px 3.6px 2.2px -0.9px rgba(0, 0, 0, 0.13),
+        0px 6px 3.6px -1.25px rgba(0, 0, 0, 0.13),
+        0px 50px 30px -2.5px rgba(0, 0, 0, 0.13);
+    }
+
+    .framer-card {
+      background: #ffffff;
+      border-radius: 24px;
+      border: 1px solid var(--border-subtle);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .framer-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+    }
+
+    .input-pill {
+      background: #fcfcfc;
+      border: 1px solid var(--border-subtle);
+      border-radius: 100px;
+      padding: 12px 24px;
+      transition: all 0.3s ease;
+    }
+
+    .input-pill:focus-within {
+      border-color: #10b981;
+      background: #fff;
+    }
+
+    .marquee-mask {
+      mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+    }
+
+    @keyframes infinite-scroll {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    .animate-infinite-scroll {
+      animation: infinite-scroll 50s linear infinite;
+    }
+
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    .animate-fade-up-slow {
+      animation: fadeUp 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes spin-ease {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    .animate-spin-ease {
+      animation: spin-ease 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+
+    @keyframes spin-slow {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .animate-spin-slow {
+      animation: spin-slow 3s linear infinite;
+    }
+
+    @keyframes growBar {
+      from {
+        transform: scaleY(0);
+      }
+
+      to {
+        transform: scaleY(1);
+      }
+    }
+
+    .animate-grow {
+      animation: growBar 1.2s cubic-bezier(.22, 1, .36, 1) forwards;
+      transform-origin: bottom;
+    }
+
+    @keyframes floatGlow {
+
+      0%,
+      100% {
+        opacity: 0.3;
+        transform: translateY(0px) scale(1);
+      }
+
+      50% {
+        opacity: 0.6;
+        transform: translateY(-20px) scale(1.1);
+      }
+    }
+
+    .animate-glow {
+      animation: floatGlow 8s ease-in-out infinite;
+    }
+
+    @keyframes bounce-slow {
+
+      0%,
+      100% {
+        transform: translateY(0) translateX(-50%);
+      }
+
+      50% {
+        transform: translateY(-10px) translateX(-50%);
+      }
+    }
+
+    .animate-bounce-slow {
+      animation: bounce-slow 2s ease-in-out infinite;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+
+    .animate-float {
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .grid-bg {
+      background-size: 32px 32px;
+      background-image: radial-gradient(rgba(0, 0, 0, .06) 1px, transparent 1px);
+    }
+  </style>
+  <script type="module" crossorigin src="/assets/index-CCTA2s91.js"></script>
+</head>
+
+<body class="antialiased overflow-x-hidden">
+  <div id="root"></div>
+
+  <!-- Hidden form for Netlify Forms detection (required for drag & drop deployment) -->
+  <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+    <input type="text" name="firstName" />
+    <input type="text" name="lastName" />
+    <input type="email" name="email" />
+    <input type="tel" name="phone" />
+    <input type="text" name="category" />
+    <textarea name="message"></textarea>
+  </form>
+
+</body>
+
+</html>
