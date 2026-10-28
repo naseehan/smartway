@@ -128,3 +128,28 @@ src/data/          Site content: products, FAQs, partners, services, timeline
 src/lib/seo.ts     Metadata and JSON-LD helpers
 netlify.toml       Netlify build settings
 ```
+
+---
+
+## Product assistant (AI chat)
+
+A chat button on every page answers visitor questions using only the site's own product, service and FAQ data.
+
+| Piece | File |
+|---|---|
+| Finds the relevant site content (keyword search, the "R" in RAG) | `src/lib/chat/retrieve.ts` |
+| System prompt and the CONTEXT block sent with each question | `src/lib/chat/prompt.ts` |
+| Calls Groq first (fast), then Gemini as backup, with plain `fetch` | `src/lib/chat/providers.ts` |
+| Per-visitor and daily request limits | `src/lib/chat/rateLimit.ts` |
+| Server endpoint `POST /api/chat` | `src/app/api/chat/route.ts` |
+| Chat window | `src/components/chat/ChatWidget.tsx` |
+
+How a question is answered:
+
+1. The widget posts the question and recent history to `/api/chat`.
+2. The route checks the input (500 characters max) and the rate limit.
+3. It picks the 5 best-matching products, services and FAQs.
+4. It sends them as CONTEXT to the model, which answers only from that context in 300 tokens or fewer.
+5. If every AI provider fails, for example because the free quota is used up, the route returns the matching page links instead.
+
+The API key stays on the server. Copy `.env.example` to `.env.local` and add a Groq key from [console.groq.com](https://console.groq.com/keys) and/or a Gemini key from [Google AI Studio](https://aistudio.google.com/apikey). On Netlify, set the same variables in the site's environment settings.

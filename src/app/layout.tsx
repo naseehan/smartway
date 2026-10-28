@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import JsonLd from "@/components/seo/JsonLd";
+import ChatWidget from "@/components/chat/ChatWidget";
 import { generateOrganizationSchema } from "@/lib/seo";
 
 const inter = Inter({
@@ -97,6 +98,7 @@ export default function RootLayout({
         <Navbar />
         <main className="flex-grow">{children}</main>
         <Footer />
+        <ChatWidget />
       </body>
     </html>
   );
